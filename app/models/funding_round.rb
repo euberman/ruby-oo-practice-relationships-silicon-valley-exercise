@@ -9,6 +9,7 @@ class FundingRound
             @type = type
             @investment = investment.to_f
             @net_worth = net_worth
+            
             @@all << self
         end
 

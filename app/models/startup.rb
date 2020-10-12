@@ -1,6 +1,7 @@
 class Startup
 
-    attr_accessor :name, :domain, :founder
+    attr_accessor :name, :domain
+    attr_reader :founder
 
     @@all = []
 
@@ -14,7 +15,6 @@ class Startup
 
     def pivot(domain, name)
         @domain = domain
-        
         @name = name
     end
 
@@ -31,7 +31,7 @@ class Startup
     end
 
     def sign_contract(venture_capitalist, type, investment)
-      FundingRound.new(self, venture_capitalist, type, investment)
+        FundingRound.new(self, venture_capitalist, type, investment)
     end
 
     def funding_rounds
@@ -43,7 +43,7 @@ class Startup
     end
 
     def total_funds
-        funding_rounds.sum {|o|  o.investment }
+        funding_rounds.sum {|o| o.investment }
     end
 
     def investors
@@ -53,5 +53,4 @@ class Startup
     def big_investors
         self.investors.select {|i| i.total_worth > 1000000000}.uniq
     end
-
 end
